@@ -7,6 +7,7 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
+import {Canal, Screen} from 'react-nonav';
 
 import {
   Header,
@@ -16,48 +17,34 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+const FirstName = () => (
+  <View style={styles.sectionContainer}>
+    <Text style={styles.sectionTitle}>Step One</Text>
+    <Text style={styles.sectionDescription}>
+      Edit <Text style={styles.highlight}>App.js</Text> to change this screen
+      and then come back to see your edits.
+    </Text>
+  </View>
+);
+
+const LastName = () => (
+  <View style={styles.sectionContainer}>
+    <Text style={styles.sectionTitle}>Step Two</Text>
+    <Text style={styles.sectionDescription}>
+      Edit <Text style={styles.highlight}>App.js</Text> to change this screen
+      and then come back to see your edits.
+    </Text>
+  </View>
+);
+
+const Main = () => (
+  <Canal>
+    <Screen name="firstname" Component={FirstName} visible />
+    <Screen name="lastname" Component={LastName} visible />
+  </Canal>
+);
+
+const App = () => <Main />;
 
 const styles = StyleSheet.create({
   scrollView: {
